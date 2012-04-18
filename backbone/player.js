@@ -47,7 +47,7 @@ var PlaylistCollectionView = Backbone.View.extend({
 
 var PlaylistView = Backbone.View.extend({
   tagName: "li",
-  template: _.tempplate($('#
+  template: _.template($('#tpl-playlist').html());
 
 
 });
