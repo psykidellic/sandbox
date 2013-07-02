@@ -239,7 +239,7 @@
 240: Electronic, Downbeat, Chill, Trip-hop
 241: Electronic, Techno, Minimal Techno
 242: Electronic, Experimental, IDM
-243: Electronic, Techno:Ambient
+243: Electronic, Techno,Ambient
 244: Electronic, Techno, Minimal Techno
 245: Electronic, Ambient, IDM
 246: Electronic, Techno, Glitch
@@ -290,7 +290,7 @@
 291: Electronic, Techno, Minimal Techno
 292: Electronic, IDM, Trip-Hop, Experimental
 293: Electronic, Rock, Indie
-294: Electronic, Techno:Minimal Techno
+294: Electronic, Techno,Minimal Techno
 295: Electronic, Drum'n'bass, Breakbeats, Experimental
 296: Electronic, Techno
 297: Electronic, Techno, Minimal Techno
@@ -404,7 +404,7 @@
 405: Electronic,  Techno,  Ambient,  Minimal Techno
 406: Electronic,  Ambient
 407: Electronic, Techno, Club
-408: Electronic, Techno:Minimal Techno
+408: Electronic, Techno,Minimal Techno
 409: Electronic, IDM, Ambient, Techno, Industrial
 410: Electronic
 411: Indie
