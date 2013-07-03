@@ -23,18 +23,14 @@ for source in data:
         similarities.append((target_id,
                 compute_jaccard_index(source[1], target[1])))
 
-        #similarities.sort(key=itemgetter(1))
-
-        print(similarities[10:20])
-        similarities.sort(key=itemgetter(1))
-        print(similarities[:10])
+        similarities.sort(key=itemgetter(1), reverse=True)
 
 # Top five for each?
-#for k, v in jc.iteritems():
-    #top10 = [x[1] for x in v[:10]]
-    #print(top10)
-    #prin
-    #print("{0} : {1}".format(k, ', '.join(v[:10])))
+for k, v in jc.iteritems():
+    top10 = [x[0] for x in v[:10]]
+    print(k)
+    print(top10)
+    #print("{0} : {1}".format(k, ', '.join(top10)))
 
 #def compute_jaccard_index(set_1, set_2):
     #return len(set_1.intersection(set_2)) / float(len(set_1.union(set_2)))
