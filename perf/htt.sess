@@ -1,0 +1,8 @@
+
+# httperf  --method POST -data "{page:1}"
+# dev.beamto.us
+/
+/api/v1/getTrendingAlbums method=POST contents="{page:1}"
+/api/v1/getTrendingAlbums method=POST contents="{page:2}"
+/api/v1/getTrendingAlbums method=POST contents="{page:3}"
+/api/v1/getTrendingAlbums method=POST contents="{page:1}"
