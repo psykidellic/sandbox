@@ -1,3 +1,10 @@
 ---
-- hosts: example
-  sudo: true
+- hosts: vagrant
+  sudo: yes
+
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+
+    - name: install git
+      action: apt pkg=git state=latest install_recommends=yes
