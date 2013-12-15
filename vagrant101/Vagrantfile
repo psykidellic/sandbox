@@ -40,8 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.provision "shell" do |s|
-    s.inline = "echo $1"
-    s.args = ["hello world"]
+    s.path = "setup.sh"
   end
 
 end
