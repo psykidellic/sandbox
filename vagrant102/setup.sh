@@ -32,4 +32,5 @@ service nginx restart
 bundle exec unicorn -c config/unicorn_development.rb -D
 chmod +x config/unicorn_development_init.sh
 ln -nfs /vagrant/config/unicorn_development_init.sh /etc/init.d/unicorn
-service unicorn restart
+su - vagrant -c 'sudo service unicorn start'
+# service unicorn start
