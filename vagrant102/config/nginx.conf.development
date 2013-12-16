@@ -1,5 +1,5 @@
 upstream unicorn {
-  server unix:/tmp/unicorn.projectname.sock fail_timeout=0;
+  server unix:/tmp/unicorn.beamtous.sock fail_timeout=0;
 }
 
 server {
