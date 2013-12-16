@@ -20,6 +20,7 @@
 # su - postgres -c "psql -U postgres -d postgres -c \"create role vagrant with createdb login password 'password1'\""
 # su - vagrant -c "createdb beamtous_development"
 
-ln -nfs /vagrant/config/database.yml.development /vagrant/config/database.yml
+# ln -nfs /vagrant/config/database.yml.development /vagrant/config/database.yml
 
-
+rm /etc/nginx/sites-enabled/default
+ln -nfs /vagrant/config/nginx.conf.development /etc/nginx/sites-enabled/beamtous
