@@ -29,4 +29,12 @@
         - autoconf
         - libc6-dev
         - libncurses5-dev
-        - atop
+        - nginx
+        - postgresql
+        - postgresql-server-dev-9.1
+        - ruby-dev
+    - name: install rails
+      gem: name={{ item }} state=present
+      with_items:
+        - rails
+        - pg
