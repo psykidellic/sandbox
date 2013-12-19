@@ -34,12 +34,6 @@
         - postgresql-server-dev-9.1
         - libpq-dev
         - python-psycopg2
-        - ruby-dev
-    - name: install rails
-      gem: name={{ item }} state=present
-      with_items:
-        - rails
-        - pg
 
 - hosts: vagrant
   remote_user: vagrant
