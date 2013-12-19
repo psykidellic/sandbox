@@ -29,6 +29,8 @@ rm /etc/nginx/sites-enabled/default 2>/dev/null
 ln -nfs /vagrant/config/nginx.conf.development /etc/nginx/sites-enabled/beamtous
 service nginx restart
 
+mkdir -p /vagrant/tmp/pids
+
 bundle exec unicorn -c config/unicorn_development.rb -D
 chmod +x config/unicorn_development_init.sh
 ln -nfs /vagrant/config/unicorn_development_init.sh /etc/init.d/unicorn
