@@ -1,0 +1,10 @@
+---
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+    - name: test connections
+      ping:
+    - name: update system to latest
+      apt: update_cache=yes upgrade=dist
+
