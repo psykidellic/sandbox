@@ -37,26 +37,6 @@
 
 - hosts: vagrant
   remote_user: vagrant
-  sudo: yes
-  sudo_user: postgres
-
-  vars:
-    dbname: beamtous_development
-    dbuser: vagrant
-    dbpassword: password1
-
-  tasks:
-  - name: ensure database is created
-    postgresql_db: name={{dbname}}
-
-  - name: ensure user has access to database
-    postgresql_user: db={{dbname}} name={{dbuser}} password={{dbpassword}} priv=ALL
-
-  - name: ensure user does not have unnecessary privilege
-    postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB
-
-- hosts: vagrant
-  remote_user: vagrant
 
   tasks:
   - name: install ruby-dev
@@ -76,3 +56,56 @@
   tasks:
     - name: copy database config template
       file: src=/vagrant/config/database.yml.development dest=/vagrant/config/database.yml state=link
+
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+    - name: remove nginx default
+      file: dest=/etc/nginx/sites-enabled/default state=absent
+    - name: set nginx conf for development
+      file: src=/vagrant/config/nginx.conf.development dest=/etc/nginx/sites-enabled/beamtous state=link
+      notify:
+      - restart nginx
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+
+- hosts: vagrant
+  remote_user: vagrant
+  tasks:
+    - name: create folder for pids
+      file: dest=/vagrant/tmp/pids state=directory
+
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+    - name: symlink unicorn_development_init
+      file: src=/vagrant/config/unicorn_development_init.sh dest=/etc/init.d/unicorn state=link
+      notify:
+      - restart unicorn
+  handlers:
+    - name: restart unicorn
+      service: name=unicorn state=started
+
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  sudo_user: postgres
+
+  vars:
+    dbname: beamtous_development
+    dbuser: vagrant
+    dbpassword: password1
+
+  tasks:
+  - name: ensure database is created
+    postgresql_db: name={{dbname}}
+
+  - name: ensure user has access to database
+    postgresql_user: db={{dbname}} name={{dbuser}} password={{dbpassword}} priv=ALL
+
+  - name: ensure user does not have unnecessary privilege
+    postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB
+
