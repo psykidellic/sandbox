@@ -70,3 +70,9 @@
     sudo: yes
   - name: install gems with binstubs
     command: chdir=/vagrant/ bundle install --binstubs
+
+- hosts: vagrant
+  remote_user: vagrant
+  tasks:
+    - name: copy database config template
+      file: src=/vagrant/config/database.yml.development dest=/vagrant/config/database.yml state=link
