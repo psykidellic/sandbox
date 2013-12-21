@@ -109,3 +109,15 @@
   - name: ensure user does not have unnecessary privilege
     postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB
 
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+  - name: install elasticsearch prerequisties
+    apt: pkg=openjdk-7-jre-headless state=installed
+  - name: download deb file
+    get_url: url=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.8.deb dest=/tmp
+  - name: install elasticsearch
+    shell: "dpkg -i /tmp/elasticsearch-0.90.8.deb"
+  - name: remove the debian package
+    file: dest=/tmp/elasticsearch-0.90.8.deb state=absent
