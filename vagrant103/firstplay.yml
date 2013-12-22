@@ -121,3 +121,9 @@
     shell: "dpkg -i /tmp/elasticsearch-0.90.8.deb"
   - name: remove the debian package
     file: dest=/tmp/elasticsearch-0.90.8.deb state=absent
+
+- hosts: vagrant
+  remote_user: vagrant
+  tasks:
+    - name: restore from backup
+      shell: "cat /vagrant/beamtous-latest.sql.gz | gunzip | psql beamtous_development"
