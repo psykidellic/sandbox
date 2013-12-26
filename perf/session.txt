@@ -1,0 +1,6 @@
+/
+  /api/v1/getUserPlaylists method=POST
+  /api/v1/getFeaturedPlaylists method=POST
+  /api/v1/getFeaturedAlbums method=POST
+  /api/v1/getTopStations method=POST
+  /api/v1/getAlbums method=POST
