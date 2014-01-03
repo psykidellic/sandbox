@@ -1,0 +1,5 @@
+[uwsgi]
+plugins = python
+chdir = /opt/graphite/conf
+module = wsgi:application
+user=www-data
