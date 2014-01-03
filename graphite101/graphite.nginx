@@ -1,0 +1,21 @@
+server {
+  listen        80 default_server deferred;
+
+  charset       utf-8;
+  access_log    /var/log/nginx/graphite.access.log;
+  error_log     /var/log/nginx/graphite.error.log;
+
+  root          /opt/graphite/webapp;
+
+  location /static/admin/ {
+    alias /usr/local/lib/python2.7/site-packages/django/contrib/static/media/;
+  }
+
+  location /content {
+  }
+
+  location  / {
+    include uwsgi_params;
+    uwsgi_pass unix:/var/run/uwsgi/app/graphite/socket;
+  }
+}
